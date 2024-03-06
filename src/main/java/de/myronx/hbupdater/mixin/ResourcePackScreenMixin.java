@@ -39,7 +39,7 @@ public abstract class ResourcePackScreenMixin extends Screen {
             this.addDrawableChild(new TexturedButtonWidget(
                     22, (this.height - 40), 22, 22,
                     new ButtonTextures(textures$UNFOCUSED, textures$FOCUSED),
-                    (button) -> HBPackUpdaterClient.downloadAllPacks(),
+                    (button) -> HBPackUpdaterClient.downloadPack(),
                     Text.translatable(MODID + ".open_tooltip")) {
                 {
                     setTooltip(Tooltip.of(Text.of(("HorstBlocks-Ressourcenpaket sofort aktualisieren. \n\n§cEntferne vorher das Ressourcenpaket aus den \"ausgewählten Ressourcenpaketen\"."))));
