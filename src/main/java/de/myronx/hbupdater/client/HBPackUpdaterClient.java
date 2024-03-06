@@ -8,6 +8,8 @@ import java.nio.file.*;
 import java.nio.file.Files;
 import java.security.MessageDigest;
 
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.text.Text;
 import org.apache.commons.codec.binary.Hex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,7 @@ import org.slf4j.LoggerFactory;
 public class HBPackUpdaterClient implements ClientModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("hb-updater");
+    private static boolean updateSuccessful = false;
 
     public static void downloadFile(URL url, String fileName) throws Exception {
         try (InputStream in = url.openStream()) {
@@ -47,6 +50,7 @@ public class HBPackUpdaterClient implements ClientModInitializer {
                 LOGGER.info(pack + " Ressourcenpaket konnte nicht gefunden werden. Downloading...");
                 downloadFile(new URL("https://horst.to/resource/" + pack + ".zip"), packFile.getAbsolutePath());
                 LOGGER.info(pack + " Ressourcenpaket erfolgreich runtergeladen.");
+                updateSuccessful = true;
             } else {
                 String localChecksum = calculateSHA1(packFile);
                 if (!localChecksum.equalsIgnoreCase(serverChecksum)) {
@@ -54,6 +58,7 @@ public class HBPackUpdaterClient implements ClientModInitializer {
                     if (packFile.delete()) {
                         downloadFile(new URL("https://horst.to/resource/" + pack + ".zip"), packFile.getAbsolutePath());
                         LOGGER.info(pack + " Ressourcenpaket Update erfolgreich.");
+                        updateSuccessful = true;
                     } else {
                         LOGGER.warn(pack + " Ressourcenpaket Update war nicht erfolgreich, bitte entferne zuerst das Ressourcenpaket aus den ausgewählten Ressourcenpaketen!");
                     }
@@ -67,12 +72,19 @@ public class HBPackUpdaterClient implements ClientModInitializer {
         }
     }
 
-    public static void downloadAllPacks() {
+    public static void downloadPack() {
         downloadResourcePack("HorstBlocks");
     }
 
     @Override
     public void onInitializeClient() {
-        downloadAllPacks();
+        downloadPack();
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (updateSuccessful && client.player != null) {
+                client.player.sendMessage(Text.of("§6§lH§e§lB-§6§lU§e§lpdater §8» §aRessourcenpaket erfolgreich runtergeladen/aktualisiert."), false);
+                updateSuccessful = false;
+            }
+        });
     }
 }
