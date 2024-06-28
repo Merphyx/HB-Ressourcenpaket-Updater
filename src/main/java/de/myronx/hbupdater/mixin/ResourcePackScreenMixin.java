@@ -42,7 +42,7 @@ public abstract class ResourcePackScreenMixin extends Screen {
                     (button) -> HBPackUpdaterClient.downloadPack(),
                     Text.translatable(MODID + ".open_tooltip")) {
                 {
-                    setTooltip(Tooltip.of(Text.of(("HorstBlocks-Ressourcenpaket sofort aktualisieren. \n\n§cEntferne vorher das Ressourcenpaket aus den \"ausgewählten Ressourcenpaketen\"."))));
+                    setTooltip(Tooltip.of(Text.of(("HorstBlocks-Ressourcenpaket manuell herunterladen/aktualisieren. \n\n§cEntferne vorher das Ressourcenpaket aus den \"ausgewählten Ressourcenpaketen\"."))));
                 }
 
                 @Override
