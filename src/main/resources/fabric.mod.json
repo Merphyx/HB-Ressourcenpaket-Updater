@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "hb-updater",
+  "version": "${version}",
+  "name": "HB-Ressourcenpaket Updater",
+  "description": "Aktualisiert automatisch das HorstBlocks Ressourcenpaket.",
+  "authors": ["Myronx"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/hb-updater/icon.png",
+  "environment": "client",
+  "mixins": [
+    "hbupdater.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "fabric": "*",
+    "minecraft": "*"
+  },
+  "recommends": {
+    "modmenu": "*",
+    "cloth-config2": "*"
+  }
+}
