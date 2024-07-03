@@ -31,6 +31,10 @@ dependencies {
 
 }
 
+fletchingTable {
+    defaultMixinEnvironment = "auto"
+}
+
 processResources {
     inputs.property "version", project.version
     inputs.property "minecraft_version", project.minecraft_version
