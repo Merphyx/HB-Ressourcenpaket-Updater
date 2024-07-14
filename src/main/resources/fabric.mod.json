@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "hb-updater",
+  "id": "hbupdater",
   "version": "${version}",
   "name": "HB-Ressourcenpaket Updater",
   "description": "Aktualisiert automatisch das HorstBlocks Ressourcenpaket.",
