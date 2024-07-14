@@ -1,6 +1,5 @@
 plugins {
     id 'fabric-loom' version '1.6-SNAPSHOT'
-    id "io.shcm.shsupercm.fabric.fletchingtable" version "1.6"
     id 'maven-publish'
 }
 
@@ -29,10 +28,6 @@ dependencies {
         exclude(group: "net.fabricmc.fabric-api")
     }
 
-}
-
-fletchingTable {
-    defaultMixinEnvironment = "auto"
 }
 
 processResources {
