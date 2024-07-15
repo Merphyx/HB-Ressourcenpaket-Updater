@@ -7,7 +7,7 @@
   "authors": ["Myronx"],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/hb-updater/icon.png",
+  "icon": "assets/hbupdater/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
