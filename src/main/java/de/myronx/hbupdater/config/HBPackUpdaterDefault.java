@@ -14,6 +14,6 @@ public class HBPackUpdaterDefault implements ModMenuApi {
             return HBPackUpdaterModMenu::create;
         }
 
-        return parent -> new NoticeScreen(() -> MinecraftClient.getInstance().setScreen(parent), Text.of("§nInfo"), Text.of("Die Mod \"HB-Updater\" benötigt Cloth Config, um die Konfiguration anzeigen zu können."));
+        return parent -> new NoticeScreen(() -> MinecraftClient.getInstance().setScreen(parent), Text.of("§nInfo"), Text.of("Die Mod \"HB-Ressourcenpaket Updater\" benötigt Cloth Config, um die Konfiguration anzeigen zu können."));
     }
 }
